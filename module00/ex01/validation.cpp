@@ -25,7 +25,7 @@ bool validateFields(const contact_t &contact)
 bool validatePhoneNumber(const std::string &phoneNumber)
 {
 	if (phoneNumber[0] == '+')
-		return isAllNDigits(phoneNumber, 1);
+		return phoneNumber.length() > 1 && isAllNDigits(phoneNumber, 1);
 	return isAllNDigits(phoneNumber);
 }
 

@@ -16,7 +16,7 @@ int main(void)
 			break;
 
 		std::cout << "\033[35mThe program only accepts ADD, SEARCH and EXIT.\033[0m" << std::endl;
-		std::cin >> inputCode;
+		std::getline(std::cin, inputCode);
 
 		if (inputCode == ADD_CODE)
 			phoneBook.addContact();

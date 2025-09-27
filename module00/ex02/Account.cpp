@@ -72,7 +72,7 @@ void Account::displayAccountsInfos(void)
 	std::cout << "accounts:" << Account::getNbAccounts() << ";";
 	std::cout << "total:" << Account::getTotalAmount() << ";";
 	std::cout << "deposits:" << Account::getNbDeposits() << ";";
-	std::cout << "withdrawals:" << Account::getNbWithdrawals() << ";";
+	std::cout << "withdrawals:" << Account::getNbWithdrawals();
 	std::cout << std::endl;
 }
 
@@ -82,7 +82,7 @@ void Account::displayStatus(void) const
 	std::cout << "index:" << this->_accountIndex << ";";
 	std::cout << "amount:" << this->_amount << ";";
 	std::cout << "deposits:" << this->_nbDeposits << ";";
-	std::cout << "withdrawals:" << this->_nbWithdrawals << ";";
+	std::cout << "withdrawals:" << this->_nbWithdrawals;
 	std::cout << std::endl;
 }
 
@@ -99,7 +99,7 @@ void Account::makeDeposit(int deposit)
 	Account::_totalNbDeposits++;
 
 	std::cout << "amount:" << this->_amount << ";";
-	std::cout << "nb_deposits:" << this->_nbDeposits << ";";
+	std::cout << "nb_deposits:" << this->_nbDeposits;
 	std::cout << std::endl;
 }
 
@@ -123,7 +123,7 @@ bool Account::makeWithdrawal(int withdrawal)
 	
 	std::cout << withdrawal << ";";
 	std::cout << "amount:" << this->_amount << ";";
-	std::cout << "nb_withdrawals:" << this->_nbWithdrawals << ";";
+	std::cout << "nb_withdrawals:" << this->_nbWithdrawals;
 	std::cout << std::endl;
 	return (true);
 }
