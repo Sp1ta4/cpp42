@@ -1,10 +1,11 @@
-NAME = account
+NAME = zombie
 
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98 #-g3 -fsanitize=address
 CPP = c++ $(CPPFLAGS)
 
-SOURCES =	Account.cpp \
-			tests.cpp
+SOURCES =	main.cpp \
+        	Zombie.cpp \
+			zombieHorde.cpp
 
 OBJECS = $(SOURCES:.cpp=.o)
 

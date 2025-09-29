@@ -1,9 +1,11 @@
-NAME = megaphone
+NAME = Harl
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 CPP = c++ $(CPPFLAGS)
 
-SOURCES =	megaphone.cpp
+SOURCES =	main.cpp \
+			Harl.cpp
+
 OBJECS = $(SOURCES:.cpp=.o)
 
 all: $(NAME)

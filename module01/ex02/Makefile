@@ -1,12 +1,9 @@
-NAME = phonebook
+NAME = references
 
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98 #-g3 -fsanitize=address
 CPP = c++ $(CPPFLAGS)
 
-SOURCES =	Contact.cpp \
-			PhoneBook.cpp \
-			validation.cpp \
-			main.cpp
+SOURCES =	main.cpp
 
 OBJECS = $(SOURCES:.cpp=.o)
 
