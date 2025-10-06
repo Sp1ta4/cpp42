@@ -1,11 +1,12 @@
-NAME = ScavTrap
+NAME = FragTrap
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 #-g3 -fsanitize=address
 CPP = c++ $(CPPFLAGS)
 
 SOURCES =	main.cpp \
 			ClapTrap.cpp \
-			ScavTrap.cpp
+			ScavTrap.cpp \
+			FragTrap.cpp
 
 OBJECS = $(SOURCES:.cpp=.o)
 
