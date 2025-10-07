@@ -1,18 +1,17 @@
-NAME =  Animal
+NAME =  Brain
 
-HEADERS = Animal.hpp Dog.hpp Cat.hpp WrongAnimal.hpp WrongCat.hpp
+HEADERS = Animal.hpp Dog.hpp Cat.hpp Brain.hpp
 
 SRCS =  main.cpp \
 		Animal.cpp \
 		Dog.cpp \
 		Cat.cpp \
-		WrongAnimal.cpp \
-		WrongCat.cpp
+		Brain.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 #-g3 -fsanitize=address
 
 all: $(NAME)
 

@@ -1,6 +1,6 @@
-#include "Cat.hpp"
+#include "WrongCat.hpp"
 
-Cat::Cat(void) : Animal("Cat")
+WrongCat::WrongCat(void) : WrongAnimal("WrongCat")
 {
 	std::cout << GRAY
 			  << this->type
@@ -9,19 +9,19 @@ Cat::Cat(void) : Animal("Cat")
 			  << std::endl;
 }
 
-Cat::Cat(const Cat& other) : Animal(other)
+WrongCat::WrongCat(const WrongCat& other) : WrongAnimal(other)
 {
         std::cout << GRAY 
-				  << "Cat copy constructor called"
+				  << "WrongCat copy constructor called"
 				  << RESET
 				  << std::endl;
         *this = other;
 }
 
-Cat& Cat::operator=(const Cat& other) {
+WrongCat& WrongCat::operator=(const WrongCat& other) {
 
     std::cout << GRAY 
-			  << "Copy assignment of Cat operator called"
+			  << "Copy assignment of WrongCat operator called"
 			  << RESET
 			  << std::endl;
 	if (this != &other)
@@ -29,15 +29,15 @@ Cat& Cat::operator=(const Cat& other) {
 	return *this;
 }
 
-Cat::~Cat()
+WrongCat::~WrongCat()
 {
 	std::cout << GRAY
-			  << "Cat destructor called!"
+			  << "WrongCat destructor called!"
 			  << RESET
 			  << std::endl;
 }
 
-void Cat::makeSound(void) const
+void WrongCat::makeSound(void) const
 {
 	std::cout << GREEN
 			  << "Meow meow!"

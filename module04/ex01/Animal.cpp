@@ -19,8 +19,7 @@ Animal::Animal(const std::string& type) {
 
 Animal::Animal(const Animal& other) {
 	std::cout << GRAY
-			  << this->type
-			  << " Animal copy constructor called"
+			  << "Animal copy constructor called"
 			  << RESET
 			  << std::endl;
     *this = other;
@@ -28,8 +27,7 @@ Animal::Animal(const Animal& other) {
 
 Animal& Animal::operator=(const Animal& other) {
 	std::cout << GRAY
-			  << this->type
-			  << " Copy assignment of Animal operator called"
+			  << "Copy assignment of Animal operator called"
 			  << RESET
 			  << std::endl;
 	if (this != &other)
