@@ -4,7 +4,7 @@ Animal::Animal(void) : type("UNKNOWN")
 {
 	std::cout << GRAY
 			  << this->type
-			  << " Default constructor called!"
+			  << " Animal default constructor called!"
 			  << RESET
 			  << std::endl;
 }

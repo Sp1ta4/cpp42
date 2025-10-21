@@ -53,7 +53,7 @@ void WrongAnimal::makeSound(void) const
 {
 	std::cout << GREEN
 			  << this->type
-			  << " make sound was called"
+			  << " make sound was called (WrongAnimal)"
 			  << RESET
 			  << std::endl;
 }

@@ -10,16 +10,16 @@ SRCS =  main.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 
-CC = c++
+CXX = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 #-g3 -fsanitize=address
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+		$(CXX) $(CFLAGS) $(OBJS) -o $(NAME)
 
 %.o: %.cpp $(HEADERS) Makefile
-		$(CC) $(CFLAGS) -c $< -o $@
+		$(CXX) $(CFLAGS) -c $< -o $@
 
 clean:
 		$(RM) $(OBJS)

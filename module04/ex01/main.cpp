@@ -7,27 +7,31 @@ int	main(void) {
 	Animal* animals[size];
 
 	unsigned int i = 0;
+
 	std::cout << std::endl;
 	std::cout << PURPLE << "#############################################" << RESET << std::endl;
 	std::cout << std::endl;
 	std::cout << GREEN << "Creating array of Dog's" << RESET << std::endl;
+
 	while(i < size / 2) {
 		std::cout << BLUE << "---------------------------------------------" << RESET << std::endl;
 		animals[i] = new Dog();
 		i++;
 	}
+
 	std::cout << BLUE << "---------------------------------------------" << RESET << std::endl;
 	std::cout << std::endl;
 	std::cout << GREEN << "Creating array of Cat's" << RESET << std::endl;
+
 	while(i < size) {
 		std::cout << BLUE << "---------------------------------------------" << RESET << std::endl;
 		animals[i] = new Cat();
 		i++;
 	}
+
 	std::cout << BLUE << "---------------------------------------------" << RESET << std::endl;
-	
 	std::cout << std::endl;
-	
+
 	std::cout << PURPLE << "########### Deep copy test ############" << RESET << std::endl;
 	std::cout << std::endl;
 
@@ -50,14 +54,18 @@ int	main(void) {
 	std::cout << std::endl;
 
 	std::cout << "\033[31mDeleting the array" << RESET << std::endl;
+
 	i = 0;
 	while (i < size) {
 		std::cout << BLUE << "------------------------------------" << RESET << std::endl;
 		delete animals[i];
 		i++;
 	}
+
 	std::cout << BLUE << "------------------------------------" << RESET << std::endl;
+	
 	delete basicDog;
+
 	std::cout << std::endl;
 	std::cout << PURPLE << "#############################################" << RESET << std::endl;
 	std::cout << std::endl;
