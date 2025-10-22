@@ -1,19 +1,17 @@
 #ifndef ICE_HPP
 # define ICE_HPP
 
-# include <iostream>
-# include <string>
-# include "ICharacter.hpp"
+# include "AMateria.hpp"
 
-class Ice : public AMateria
-{
-	protected:
-		std::string const &_type;
+class Ice : public AMateria {
 	public:
 		Ice();
-		virtual AMateria* clone() const = 0;
-		virtual void use(ICharacter& target);
-};
+		Ice(const Ice& other);
+		Ice& operator=(const Ice& other); 
+		virtual ~Ice();
 
+		virtual AMateria*	clone() const;
+		virtual void		use(ICharacter& traget);
+};
 
 #endif
