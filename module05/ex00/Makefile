@@ -1,29 +1,32 @@
-NAME =  Bureaucrat
-
-HEADERS = Bureaucrat.hpp 
-
-SRCS =  main.cpp  \
-		Bureaucrat.cpp
-		
-OBJS = $(SRCS:.cpp=.o)
+NAME = Bureaucrat
 
 CXX = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+DEBUGFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address -std=c++98
+
+SOURCES =	main.cpp  \
+			Bureaucrat.cpp
+
+OBJECTS = $(SOURCES:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-		$(CXX) $(CFLAGS) $(OBJS) -o $(NAME)
+$(NAME): $(OBJECTS)
+	$(CXX) $(CPPFLAGS) $^ -o $(NAME) -I.
 
-%.o: %.cpp $(HEADERS) Makefile
-		$(CXX) $(CFLAGS) -c $< -o $@
+%.o: %.cpp Makefile
+	$(CXX) $(CPPFLAGS) -c $< -o $@
+
+debug: CPPFLAGS = $(DEBUGFLAGS)
+debug: fclean $(NAME)
+	@echo "\033[32mProject compiled in DEBUG mode with AddressSanitizer\033[0m"
 
 clean:
-		$(RM) $(OBJS)
+	rm -rf $(OBJECTS)
 
 fclean: clean
-		$(RM) $(NAME)
+	rm -rf $(NAME)
 
-re: fclean all 
+re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re debug

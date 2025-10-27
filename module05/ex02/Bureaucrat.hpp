@@ -4,7 +4,8 @@
 # include <string>
 # include <iostream>
 # include <stdexcept>
-# include "Form.hpp"
+# include <fstream>
+# include "AForm.hpp"
 
 # define RESET   "\033[0m"
 # define RED     "\033[31m"
@@ -14,7 +15,7 @@
 # define MAGENTA "\033[35m"
 # define CYAN    "\033[36m"
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -32,7 +33,7 @@ class Bureaucrat
 		const std::string	getName()	const;
 		void				incrementGrade();
 		void				decrementGrade();
-		void				signForm(Form &form) const;
+		void				signForm(AForm &form) const;
 		
 		class GradeTooHighException : public std::exception
 		{
