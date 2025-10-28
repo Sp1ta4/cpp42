@@ -1,8 +1,8 @@
 #ifndef ROBOTMY_REQUEST_FORM_HPP
-#define ROBOTMY_REQUEST_FORM_HPP
+# define ROBOTMY_REQUEST_FORM_HPP
 
-#include "AForm.hpp"
-
+# include "AForm.hpp"
+# include <math.h>
 class RobotomyRequestForm : public AForm
 {
 	private:

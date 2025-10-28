@@ -1,19 +1,5 @@
 #include "ShrubberyCreationForm.hpp"
 
-const std::string ShrubberyCreationForm::m_shrubbery =
-	"          &&& &&  & &&\n"
-	"      && &\\/&\\|& ()|/ @, &&\n"
-	"      &\\/(/&/&||/& /_/)_&/_&\n"
-	"   &() &\\/&|()|/&\\/ '%\" & ()\n"
-	"  &_\\_&&_\\ |& |&&/&__%_/_& &&\n"
-	"&&   && & &| &| /& & % ()& /&&\n"
-	"   ()&_---()&\\&\\|&&-&&--%---()~\n"
-	"               &&     \\|||\n"
-	"                        |||\n"
-	"                        |||\n"
-	"                        |||\n"
-	"                  , -=-~  .-^- _\n";
-
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137), m_target("UNDEFINED")
 {
 	std::cout << GREEN "ShrubberyCreationForm default constructor called" << RESET << std::endl;
@@ -40,18 +26,23 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return (*this);
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
-{
-	AForm::execute(executor);
-	std::ofstream fileout(m_target + "_shrubbery");
-	if (!fileout.is_open())
-	{
-		std::cerr << "File can't be opened" << std::endl;
-		return;
-	}
-	fileout << m_shrubbery << std::endl;
-	fileout.close();
+void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
+    AForm::execute(executor);
+    std::ofstream fileout((m_target + "_shrubbery").c_str());
+    if (!fileout.is_open())
+        throw std::runtime_error("Failed to open output file");
+    fileout << "       _-_       " << std::endl;
+    fileout << "    /~~   ~~\\   " << std::endl;
+    fileout << " /~~         ~~\\ " << std::endl;
+    fileout << "{               }" << std::endl;
+    fileout << " \\  _-     -_  / " << std::endl;
+    fileout << "   ~  \\\\ //  ~  " << std::endl;
+    fileout << "_- -   | | _- _  " << std::endl;
+    fileout << "  _ -  | |   -_  " << std::endl;
+    fileout << "      // \\\\      " << std::endl;
+    fileout.close();
 }
+
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {

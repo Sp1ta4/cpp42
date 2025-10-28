@@ -45,19 +45,19 @@ AForm::~AForm()
 	std::cout << RED << "AForm destructor called" << RESET << std::endl;
 }
 
-int	AForm::getSignGrade()	const {
+int	AForm::getSignGrade() const {
 	return (this->m_signGrade);
 };
 
-int	AForm::getExecGrade()	const {
+int	AForm::getExecGrade() const {
 	return (this->m_execGrade);
 };
 
-bool	AForm::getIsSigned()	const {
+bool	AForm::getIsSigned() const {
 	return (this->m_isSigned);
 };
 
-const std::string	AForm::getName()		const { 
+const std::string	AForm::getName() const { 
 	return (this->m_name);
 };
 
@@ -77,6 +77,19 @@ const char* AForm::GradeTooLowException::what() const throw()
 {
 	return "Grade is too low!";
 }
+
+const char *AForm::FormNotSignedException::what() const throw() {
+	return "Form is not signed!";
+}
+
+void AForm::execute(Bureaucrat const &executor) const
+{
+	if (this->m_isSigned == false)
+		throw AForm::FormNotSignedException();
+	if (executor.getGrade() > this->m_execGrade)
+		throw AForm::GradeTooLowException();
+}
+
 
 std::ostream& operator<<(std::ostream& os, const AForm& point) {
         os << "AForm name : " << point.getName() << ", Grade to sign : " << \
