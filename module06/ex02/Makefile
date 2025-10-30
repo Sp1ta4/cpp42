@@ -1,16 +1,11 @@
-NAME = Bureaucrat
+NAME = Base
 
 CXX = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 DEBUGFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address -std=c++98
 
-SOURCES =	main.cpp  \
-			Bureaucrat.cpp \
-			AForm.cpp \
-			PresidentialPardonForm.cpp \
-			RobotomyRequestForm.cpp \
-			ShrubberyCreationForm.cpp \
-			Intern.cpp
+SOURCES =	main.cpp \
+			Base.cpp \
 
 OBJECTS = $(SOURCES:.cpp=.o)
 
