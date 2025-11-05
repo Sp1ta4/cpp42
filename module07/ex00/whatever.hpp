@@ -4,7 +4,6 @@
 #include <iostream>
 
 template <typename T, typename U>
-
 void swap (T &a, U &b)
 {
 	T tmp = a;

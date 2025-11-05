@@ -50,6 +50,8 @@
 		"cinttypes": "cpp",
 		"typeinfo": "cpp",
 		"fstream": "cpp",
-		"cstring": "cpp"
+		"cstring": "cpp",
+		"list": "cpp",
+		"climits": "cpp"
 	}
 }
