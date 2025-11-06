@@ -32,7 +32,7 @@ class Span
 		~Span();
 
 		template <typename T>
-		void addNumbers(T begin, T end);
+		void 	addNumbers(T begin, T end);
 
 		void	addNumber(int n);
 		int		shortestSpan();

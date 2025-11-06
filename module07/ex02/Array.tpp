@@ -5,7 +5,7 @@ template <typename T>
 Array<T>::Array() : _data(NULL), _size(0) {}
 
 template <typename T>
-Array<T>::Array(size_t n) : _data(new T[n]), _size(n) {}
+Array<T>::Array(size_t n) : _data(new T[n]()), _size(n) {}
 
 template <typename T>
 Array<T>::Array(const Array& other) : _data(NULL), _size(0) {

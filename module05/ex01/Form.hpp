@@ -19,8 +19,8 @@ class Form
 		Form & operator=(Form const & other);
 		~Form();
 
-		int			getSignGrade()	const;
-		int			getExecGrade()	const;
+		int					getSignGrade()	const;
+		int					getExecGrade()	const;
 		bool				getIsSigned()	const;
 		const std::string	getName()		const;
 		void				beSigned(const Bureaucrat& bureaucrat);

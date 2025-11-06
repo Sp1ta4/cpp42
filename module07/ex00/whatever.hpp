@@ -3,8 +3,8 @@
 
 #include <iostream>
 
-template <typename T, typename U>
-void swap (T &a, U &b)
+template <typename T>
+void swap (T &a, T &b)
 {
 	T tmp = a;
 	a = b;

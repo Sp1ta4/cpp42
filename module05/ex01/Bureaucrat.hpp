@@ -19,8 +19,8 @@ class Form;
 class Bureaucrat
 {
 	private:
-		std::string const m_name;
-		int m_grade;
+		std::string const 	m_name;
+		int 				m_grade;
 	public:
 		Bureaucrat();
 		Bureaucrat(std::string name, int grade);
@@ -29,7 +29,7 @@ class Bureaucrat
 		~Bureaucrat();
 
 		int					getGrade()	const;
-		const std::string	getName()	const;
+		std::string const 	getName()	const;
 		void				incrementGrade();
 		void				decrementGrade();
 		void				signForm(Form &form) const;

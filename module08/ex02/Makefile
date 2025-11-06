@@ -1,4 +1,4 @@
-NAME = EasyFind
+NAME = MutantStack
 
 CXX = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98

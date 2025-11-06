@@ -7,8 +7,8 @@
 template <typename T>
 class Array {
 	private:
-	    T* _data;
-	    size_t _size;
+	    T		*_data;
+	    size_t	_size;
 	
 	public:
 	    Array();
