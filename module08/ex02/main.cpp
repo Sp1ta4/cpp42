@@ -109,7 +109,7 @@ int	main(void)
 
 
 //############### TEST WITH LIST ###################//
-
+/*
 int main(void) {
 	std::list<int> mlist;
 
@@ -146,4 +146,4 @@ int main(void) {
 	std::cout << MAGENTA "***********************************************" RESET << std::endl;
 
 	return 0;
-}
+}*/
