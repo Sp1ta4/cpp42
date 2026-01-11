@@ -123,27 +123,31 @@ BitcoinExchange::~BitcoinExchange() {};
 
 bool BitcoinExchange::_isValidDate(const std::string &date)
 {
-	int year  = std::atoi(date.substr(0, 4).c_str());
-	int month = std::atoi(date.substr(5, 2).c_str());
-	int day   = std::atoi(date.substr(8, 2).c_str());
+	int year, month, day;
 
-	if (year <= 0 || month < 1 || month > 12 || day < 1)
+	if (sscanf(date.c_str(), "%4d-%2d-%2d", &year, &month, &day) != 3)
+	{
 		return false;
+	}
+
+	if (month < 1 || month > 12 || day < 1 || year == 0)
+	{
+		return false;
+	}
 
 	switch (month)
 	{
-		case February:
-			return day <= (isLeapYear(year) ? 29 : 28);
-		case April:
-		case June:
-		case September:
-		case November:
-			return day <= 30;
+		case BitcoinExchange::February:
+			return (day <= (isLeapYear(year) ? 29 : 28));
+		case BitcoinExchange::April:
+		case BitcoinExchange::June:
+		case BitcoinExchange::September:
+		case BitcoinExchange::November:
+			return (day <= 30);
 		default:
-			return day <= 31;
+			return (day <= 31);
 	}
 }
-
 
 void BitcoinExchange::exchange()
 {
