@@ -1,29 +1,35 @@
 #pragma once
 
-#include <vector>
-#include <deque>
-#include <iostream>
-#include <sstream>
-#include <stdexcept>
-#include <string>
-#include <cctype>
+#include <iostream>   
+#include <cstdlib>
+#include <stdexcept>  
+#include <cctype>     
+#include <string>     
 #include <algorithm>
-#include <ctime>
+#include <ctime>    
+#include <vector>     
+#include <deque>      
+#include <sstream>
 
 class PmergeMe
 {
-private:
-    std::vector<int> _vec;
-    std::deque<int>  _deq;
+    private:
+        std::vector<int> _vec;
+        std::deque<int>  _deq;
 
-    bool isPositiveNumber(const std::string &s) const;
-    void mergeInsertSortVector(std::vector<int> &v);
-    void mergeInsertSortDeque(std::deque<int> &d);
+        bool isPositiveNumber(const std::string &s) const;
 
-public:
-    PmergeMe() {}
-    ~PmergeMe() {}
+        void fordJohnsonSortVector(std::vector<int> &v);
+        void insertPendVector(std::vector<int> &mainChain,
+                              const std::vector<int> &pend);
+        void fordJohnsonSortDeque(std::deque<int> &d);
+        void insertPendDeque(std::deque<int> &mainChain,
+                             const std::deque<int> &pend);
+        std::vector<size_t> buildJacobsthalSequence(size_t n);
 
-    void parseArguments(int argc, char **argv);
-    void sortAndDisplay();
+    public:
+        PmergeMe();
+
+        void parseArguments(int argc, char **argv);
+        void sortAndDisplay();
 };
