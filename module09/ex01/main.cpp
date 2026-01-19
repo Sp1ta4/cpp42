@@ -8,6 +8,6 @@ int main(int argc, char *argv[])
 	{
 		RPN a;
 
-		 a.start(argv[1]);
+		a.start(argv[1]);
 	}
 }
