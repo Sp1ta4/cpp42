@@ -1,59 +1,44 @@
 #include "bigint.hpp"
 
-bigint::bigint() : _str_num("0")
+bigint::bigint(): _num_str("0")
 {}
 
-bigint::bigint(unsigned int num)
-{
-	std::ostringstream ss;
+bigint::bigint(const std::string& num_str) {
+	this->_num_str = num_str;
+}
 
+bigint::bigint(unsigned int num) {
+	std::ostringstream ss;
 	ss << num;
 	if (!ss)
 	{
-		throw std::runtime_error("Cannot parse numer");
+		throw std::runtime_error("Cannot parse number");
 	}
-	this->_str_num = ss.str();
+	this->_num_str = ss.str();
 }
 
-bigint& bigint::operator=(const bigint& source)
-{
-	if (this != &source)
-		this->_str_num = source._str_num;
+bigint::bigint(const bigint& src) {
+	*this = src;
+}
 
+bigint& bigint::operator=(const bigint& src) {
+	if (this != &src)
+	{
+		this->_num_str = src._num_str;
+	}
 	return *this;
 }
 
-bigint::bigint(const std::string& str)
-{
-	if (str.empty())
-		_str_num = "0";
-	else
-		_str_num = str;
-}
-
-bigint::bigint(const bigint& source) {
-	*this = source;
-}
-
 bigint::~bigint()
-{
-}
+{}
 
 const std::string& bigint::getStrNum() const {
-	return this->_str_num;
+	return this->_num_str;
 }
 
-bigint bigint::operator+(const bigint& rhs) const
-{
-	bigint tmp(*this);
-	tmp += rhs;
-	return tmp;
-}
-
-bigint& bigint::operator+=(const bigint& num)
-{
-	const std::string& num2 = num._str_num;
-	std::string& num1 = this->_str_num;
+bigint& bigint::operator+=(const bigint& num) {
+	std::string& num1 = this->_num_str;
+	const std::string& num2 = num._num_str;
 
 	int i = num1.length() - 1;
 	int j = num2.length() - 1;
@@ -64,107 +49,114 @@ bigint& bigint::operator+=(const bigint& num)
 	while (i >= 0 || j >= 0 || carry)
 	{
 		int sum = carry;
-
 		if (i >= 0)
 			sum += num1[i--] - '0';
 		if (j >= 0)
 			sum += num2[j--] - '0';
-
 		res.insert(res.begin(), (sum % 10) + '0');
 		carry = sum / 10;
 	}
-
 	num1 = res;
 	return *this;
 }
 
-bigint& bigint::operator++()
-{
+bigint bigint::operator+(const bigint& num) const {
+	bigint res(*this);
+	res += num;
+	return res;
+}
+
+bigint& bigint::operator++() {
 	*this += bigint(1);
-	return *this;
+	return (*this);
 }
 
 bigint bigint::operator++(int) {
-	bigint temp = *this;
-	*this += bigint(1);
+	bigint temp(*this);
+	++(*this);
 
-	return temp;
+	return (temp);
 }
 
-bigint bigint::operator<<(unsigned int n) const
-{
-	bigint res = *this;
-	res._str_num.insert(res._str_num.end(), n, '0');
+std::ostream& operator<<(std::ostream& ss, const bigint& num) {
+	ss << num.getStrNum();
+	return ss;
+}
+
+bigint bigint::operator<<(unsigned int n) const {
+	bigint res(*this);
+
+	res._num_str.insert(res._num_str.end(), n, '0');
 	return res;
 }
 
-bigint bigint::operator>>(unsigned int n) const
-{
-	bigint res = *this;
-	size_t len = res._str_num.length();
+bigint bigint::operator>>(unsigned int n) const {
+	bigint res;
 
-	if (n >= len)
-		res._str_num = "0";
-	else
-		res._str_num.erase(res._str_num.length() - n, n);
-	
-	return res;
+	if (n >= this->_num_str.length())
+	{
+		return res;
+	}	
+	res._num_str = this->_num_str;
+	res._num_str.erase(res._num_str.length() - n, n);
+	return(res);
 }
 
 bigint& bigint::operator<<=(unsigned int n) {
-	*this = *this << n;
-	return *this; 
+	*this = (*this << n);
+	return *this;
 }
 
 bigint& bigint::operator>>=(unsigned int n) {
 	*this = *this >> n;
-	return *this; 
-};
-
-unsigned int stringToUINT(std::string str)
-{
-	std::stringstream ss(str);
-	unsigned int res;
-	ss >> res;
-	return (res);
+	return *this;
 }
 
-bigint bigint::operator<<(bigint& other) const
-{
-	bigint res = *this;
-	res._str_num.insert(res._str_num.end(), stringToUINT(other._str_num), '0');
+unsigned int bigintToUINT(const bigint& n) {
+	std::stringstream ss(n.getStrNum());
+	unsigned int r;
+	ss >> r;
+	return r;
+}
+
+bigint bigint::operator<<(const bigint& n) const {
+	bigint res(*this);
+
+	res._num_str.insert(res._num_str.end(), bigintToUINT(n), '0');
 	return res;
 }
 
-bigint bigint::operator>>(bigint& other) const
-{
-	bigint res = *this;
-	res = res >> stringToUINT(other._str_num);
-	return res;
+bigint bigint::operator>>(const bigint& n) const {
+	bigint res;
+
+	if (bigintToUINT(n) >= this->_num_str.length())
+		return res;
+	res._num_str = this->_num_str;
+	res._num_str.erase(res._num_str.length() - bigintToUINT(n), bigintToUINT(n));
+	return(res);
 }
 
-bigint& bigint::operator<<=(const bigint& other) {
-	*this = *this << stringToUINT(other._str_num);
-	return *this; 
+bigint& bigint::operator<<=(const bigint& n) {
+	*this = (*this << n);
+	return *this;
 }
 
-bigint& bigint::operator>>=(const bigint& other) {
-	*this = *this >> stringToUINT(other._str_num);
-	return *this; 
-};
-
-bool bigint::operator==(const bigint& other) const {
-	return (this->_str_num == other._str_num);
+bigint& bigint::operator>>=(const bigint& n) {
+	*this = *this >> n;
+	return *this;
 }
 
-bool bigint::operator!=(const bigint& other) const {
-	return (this->_str_num != other._str_num);	
-};
-	
-bool bigint::operator<(const bigint& other) const
-{
-	const std::string& a = _str_num;
-	const std::string& b = other._str_num;
+bool bigint::operator==(const bigint& n) const {
+	return this->_num_str == n._num_str;
+}
+
+bool bigint::operator>(const bigint& n) const {
+	return !((*this) < n);
+}
+
+bool bigint::operator<(const bigint& n) const {
+	const std::string& a = this->_num_str;
+	const std::string& b = n._num_str;
 
 	if (a.length() != b.length())
 		return a.length() < b.length();
@@ -172,22 +164,15 @@ bool bigint::operator<(const bigint& other) const
 	return a < b;
 }
 
-bool bigint::operator>(const bigint& other) const
-{
-	return (!((*this) < other));
+bool bigint::operator>=(const bigint& n) const {
+	return ((*this > n) || (*this == n));
+}
+		
+bool bigint::operator<=(const bigint& n) const {
+	return ((*this < n) || (*this == n));
 }
 
-bool bigint::operator<=(const bigint& other) const
-{
-	return (((*this) < other) || ((*this) == other));
+bool bigint::operator!=(const bigint& n) const {
+	return this->_num_str != n._num_str;
 }
-
-bool bigint::operator>=(const bigint& other) const
-{
-	return (((*this) > other) || ((*this) == other));
-}
-
-std::ostream& operator<<(std::ostream& out, const bigint& num) {
-	out << num.getStrNum();
-	return out;
-}
+		

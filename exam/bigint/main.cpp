@@ -18,7 +18,7 @@ int main()
     std::cout << "++b = " << ++b << std::endl;
     std::cout << "b++ = " << b++ << std::endl;
 
-    std::cout << "(a >> 3) = " << (a >> 7) << std::endl;
+    std::cout << "(a >> 3) = " << (a >> 3) << std::endl;
     std::cout << "(d <<= 4) = " << (d <<= 4) << std::endl;
     std::cout << "(d >>= 2) = " << (d >>= (const bigint)2) << std::endl;
 
