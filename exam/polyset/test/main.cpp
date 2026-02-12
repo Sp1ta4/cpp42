@@ -15,16 +15,21 @@ int main(int argc, char **argv) {
     t->insert(atoi(argv[i]));
     a->insert(atoi(argv[i]));
   }
+  std::cout << "##############" << std::endl;
   t->print();
   a->print();
-
-  for (int i = 1; i < argc; i++) {
+  std::cout << "##############" << std::endl;
+ 
+    std::cout << t->has(111111) << std::endl;
+    std::cout << t->has(421) << std::endl;
+	for (int i = 1; i < argc; i++) {
     std::cout << t->has(atoi(argv[i])) << std::endl;
     std::cout << a->has(atoi(argv[i])) << std::endl;
     std::cout << t->has(atoi(argv[i]) - 1) << std::endl;
     std::cout << a->has(atoi(argv[i]) - 1) << std::endl;
   }
 
+  std::cout << "##############" << std::endl;
   t->clear();
   a->clear();
 
@@ -34,6 +39,7 @@ int main(int argc, char **argv) {
 
   set sa(*a);
   set st(*t);
+      int values[] = {1, 2, 3, 4};  
   for (int i = 1; i < argc; i++) {
     st.insert(atoi(argv[i]));
     sa.insert(atoi(argv[i]));
@@ -43,14 +49,7 @@ int main(int argc, char **argv) {
     sa.get_bag().print();
     st.print();
     sa.clear();
-    sa.insert(
-        (int[]){
-            1,
-            2,
-            3,
-            4,
-        },
-        4);
+    sa.insert(values,4);
     std::cout << std::endl;
   }
 
