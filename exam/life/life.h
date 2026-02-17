@@ -10,13 +10,6 @@ typedef struct s_game {
 	int height;
 	int iterations;
 
-	char alive;
-	char dead;
-
-	int i;
-	int j;
-	int draw;
-
 	char** board;
 } t_game
 
